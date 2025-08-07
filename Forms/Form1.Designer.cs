@@ -43,8 +43,10 @@
             buttonSua = new Button();
             buttonLM = new Button();
             buttonXoa = new Button();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSoLuong).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -54,13 +56,13 @@
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(0, 598);
+            dataGridView1.Location = new Point(0, 717);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(1604, 327);
+            dataGridView1.Size = new Size(1920, 327);
             dataGridView1.TabIndex = 0;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -156,6 +158,7 @@
             buttonThem.TabIndex = 12;
             buttonThem.Text = "Thêm";
             buttonThem.UseVisualStyleBackColor = true;
+            buttonThem.Click += buttonThem_Click;
             // 
             // buttonSua
             // 
@@ -165,6 +168,7 @@
             buttonSua.TabIndex = 13;
             buttonSua.Text = "Sửa";
             buttonSua.UseVisualStyleBackColor = true;
+            buttonSua.Click += buttonSua_Click;
             // 
             // buttonLM
             // 
@@ -174,6 +178,7 @@
             buttonLM.TabIndex = 15;
             buttonLM.Text = "Làm mới";
             buttonLM.UseVisualStyleBackColor = true;
+            buttonLM.Click += buttonLM_Click;
             // 
             // buttonXoa
             // 
@@ -183,12 +188,24 @@
             buttonXoa.TabIndex = 14;
             buttonXoa.Text = "Xóa";
             buttonXoa.UseVisualStyleBackColor = true;
+            buttonXoa.Click += buttonXoa_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(1437, 155);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(379, 326);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 16;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1604, 925);
+            ClientSize = new Size(1920, 1044);
+            Controls.Add(pictureBox1);
             Controls.Add(buttonLM);
             Controls.Add(buttonXoa);
             Controls.Add(buttonSua);
@@ -208,6 +225,7 @@
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownSoLuong).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -229,5 +247,6 @@
         private Button buttonSua;
         private Button buttonLM;
         private Button buttonXoa;
+        private PictureBox pictureBox1;
     }
 }
