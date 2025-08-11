@@ -1,11 +1,14 @@
-﻿using PRO131_01.Models;
+﻿using PRO131_01.Extentions;
+using PRO131_01.Models;
 using PRO131_01.Services;
+using System.Collections.Generic;
 
 namespace PRO131_01
 {
     public partial class Form1 : Form
     {
         SanPhamService _sanPhamservice;
+
 
 
         private string currentImagePath = "";
@@ -23,6 +26,13 @@ namespace PRO131_01
             comboBoxLoaiSP.DataSource = _sanPhamservice.GetProductTypes();
             comboBoxLoaiSP.ValueMember = nameof(LoaiSanPham.MaLoai);
             comboBoxLoaiSP.DisplayMember = nameof(LoaiSanPham.TenLoai);
+
+            List<LoaiSanPham> listLoc = new List<LoaiSanPham>() ;
+            listLoc.Add(new LoaiSanPham() {TenLoai= "Tất cả", MaLoai= -999 });
+            listLoc.AddRange(_sanPhamservice.GetProductTypes());
+           comboBoxLocLoai.DataSource  = listLoc;
+            comboBoxLocLoai.ValueMember = nameof(LoaiSanPham.MaLoai);
+            comboBoxLocLoai.DisplayMember = nameof(LoaiSanPham.TenLoai);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -144,6 +154,34 @@ namespace PRO131_01
             numericUpDownSoLuong.Value = 0;
             richTextBoxMoTa.ResetText();
             pictureBox1.Image = null;
+            LoadTable();
+        }
+
+        private void textBoxTimKiem_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar == (char)Keys.Enter))
+            {
+                var list = _sanPhamservice.GetProducts();
+
+                dataGridView1.DataSource = list.TimKiem(textBoxTimKiem.Text.Trim());
+
+            }
+        }
+
+        private void comboBoxLocLoai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            long maLoai = ((dynamic)comboBoxLocLoai.SelectedItem).MaLoai;
+            dataGridView1.DataSource = _sanPhamservice.LocSanPhamTheoLoai(maLoai);
+            if (maLoai == -999)
+            {
+                dataGridView1.DataSource = _sanPhamservice.GetProductsWithInclude(nameof(SanPham.MaLoaiSanPhamNavigation));
+            }
+        }
+
+        private void comboBoxLocLoai_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

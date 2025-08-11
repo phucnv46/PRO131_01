@@ -3,15 +3,17 @@ using PRO131_01.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Dynamic.Core;
 
 namespace PRO131_01.Repositories
 {
     public class GenericRepository<T> where T : class
     {
-        readonly Sd20308DbContext _context; // khai báo context
-        readonly DbSet<T> _dbSet; //khai báo dbset
+        readonly public Sd20308DbContext _context; // khai báo context
+        readonly public DbSet<T> _dbSet; //khai báo dbset
 
         public GenericRepository()
         {
@@ -53,11 +55,14 @@ namespace PRO131_01.Repositories
         {
             var query = _dbSet.AsQueryable();
 
-            foreach (var prop in includeProp) {
+            foreach (var prop in includeProp)
+            {
                 query = query.Include(prop);
             }
 
             return query.ToList();
         }
+
+       
     }
 }

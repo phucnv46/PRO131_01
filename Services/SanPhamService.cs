@@ -1,4 +1,5 @@
-﻿using PRO131_01.Models;
+﻿using PRO131_01.Extentions;
+using PRO131_01.Models;
 using PRO131_01.Repositories;
 using System;
 using System.Collections.Generic;
@@ -51,5 +52,13 @@ namespace PRO131_01.Services
         {
             _repository.Remove(sp);
         }
+
+        public List<SanPham> LocSanPhamTheoLoai(long maLoaiSanPham )
+        {
+            return GetProductsWithInclude(nameof(SanPham.MaLoaiSanPhamNavigation)).ToList()
+                .Loc(sp=>sp.MaLoaiSanPham == maLoaiSanPham);
+        }
+
+       
     }
 }

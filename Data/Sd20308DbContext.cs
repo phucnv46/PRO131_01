@@ -38,7 +38,7 @@ public partial class Sd20308DbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=np:\\\\.\\pipe\\LOCALDB#7E529D6B\\tsql\\query;Database=SD20308_DB");
+        => optionsBuilder.UseSqlServer("Server=np:\\\\.\\pipe\\LOCALDB#28920D0F\\tsql\\query;Database=SD20308_DB");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
