@@ -33,7 +33,6 @@
             AntdUI.MenuItem menuItem3 = new AntdUI.MenuItem();
             AntdUI.MenuItem menuItem4 = new AntdUI.MenuItem();
             AntdUI.MenuItem menuItem5 = new AntdUI.MenuItem();
-            AntdUI.MenuItem menuItem6 = new AntdUI.MenuItem();
             menu1 = new AntdUI.Menu();
             panel1 = new AntdUI.Panel();
             SuspendLayout();
@@ -41,26 +40,25 @@
             // menu1
             // 
             menu1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            menu1.BackColor = SystemColors.Control;
+            menu1.Font = new Font("Segoe UI", 12F);
+            menuItem1.ID = "bh";
             menuItem1.Text = "Bán hàng";
-            menuItem2.ID = "ql";
-            menuItem3.ID = "qlsp";
-            menuItem3.Text = "Quản lý sản phẩm";
-            menuItem4.ID = "qlnv";
+            menuItem2.ID = "sp";
+            menuItem2.Text = "Quản lý sản phẩm";
+            menuItem3.ID = "hd";
+            menuItem3.Text = "Quản lý hóa đơn";
+            menuItem4.ID = "nv";
             menuItem4.Text = "Quản lý nhân viên";
-            menuItem5.ID = "qlkh";
-            menuItem5.Text = "Quản lý khách hàng";
-            menuItem2.Sub.Add(menuItem3);
-            menuItem2.Sub.Add(menuItem4);
-            menuItem2.Sub.Add(menuItem5);
-            menuItem2.Text = "Quản lý";
-            menuItem6.Text = "Cài đặt";
+            menuItem5.ID = "bc";
+            menuItem5.Text = "Báo cáo thống kê";
             menu1.Items.Add(menuItem1);
             menu1.Items.Add(menuItem2);
-            menu1.Items.Add(menuItem6);
-            menu1.Location = new Point(-1, 196);
+            menu1.Items.Add(menuItem3);
+            menu1.Items.Add(menuItem4);
+            menu1.Items.Add(menuItem5);
+            menu1.Location = new Point(1, 69);
             menu1.Name = "menu1";
-            menu1.Size = new Size(413, 893);
+            menu1.Size = new Size(513, 1020);
             menu1.TabIndex = 0;
             menu1.Text = "menu1";
             menu1.SelectChanged += menu1_SelectChanged;
@@ -68,9 +66,9 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Location = new Point(431, 194);
+            panel1.Location = new Point(520, 69);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1668, 895);
+            panel1.Size = new Size(1504, 1029);
             panel1.TabIndex = 1;
             panel1.Text = "panel1";
             // 
@@ -78,7 +76,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2097, 1090);
+            ClientSize = new Size(2024, 1095);
             Controls.Add(panel1);
             Controls.Add(menu1);
             Name = "FormMain";

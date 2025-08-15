@@ -1,5 +1,4 @@
-﻿using PRO131_01.Extentions;
-using PRO131_01.Models;
+﻿using PRO131_01.Models;
 using PRO131_01.Repositories;
 using System;
 using System.Collections.Generic;
@@ -11,54 +10,23 @@ namespace PRO131_01.Services
 {
     public class SanPhamService
     {
-        GenericRepository<SanPham> _repository;
-        GenericRepository<LoaiSanPham> _lSPrepository;
-
+        GenericRepository<Giay> _repository;
 
         public SanPhamService()
         {
-            _repository = new GenericRepository<SanPham>();
-            _lSPrepository = new GenericRepository<LoaiSanPham>();
+            _repository = new GenericRepository<Giay>();
+
         }
 
-        public List<SanPham> GetProducts()
+        public List<Giay> LayDsGiay()
         {
-            return _repository.GetAll();
+             return _repository.GetAll();
         }
 
-
-        public List<LoaiSanPham> GetProductTypes()
+        public List<string> LayDanhSachHang()
         {
-            return _lSPrepository.GetAll();
+            var list = LayDsGiay().ToList();
+            return list.Select(s=>s.Hang).Distinct().ToList();
         }
-
-
-        public List<SanPham> GetProductsWithInclude(params string[] includes)
-        {
-            return _repository.GetAllWithInClude(includes);
-        }
-
-        public void Them(SanPham sp)
-        {
-            _repository.Add(sp);
-        }
-
-        public void Sua(SanPham sp)
-        {
-            _repository.Update(sp);
-        }
-
-        public void Xoa(SanPham sp)
-        {
-            _repository.Remove(sp);
-        }
-
-        public List<SanPham> LocSanPhamTheoLoai(long maLoaiSanPham )
-        {
-            return GetProductsWithInclude(nameof(SanPham.MaLoaiSanPhamNavigation)).ToList()
-                .Loc(sp=>sp.MaLoaiSanPham == maLoaiSanPham);
-        }
-
-       
     }
 }

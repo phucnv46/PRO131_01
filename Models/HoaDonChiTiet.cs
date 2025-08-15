@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PRO131_01.Models;
-
-public partial class HoaDonChiTiet
+namespace PRO131_01.Models
 {
-    public string MaHoaDon { get; set; } = null!;
+    public class HoaDonChiTiet
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]   
+        public long MaHDCT { get; set; }
 
-    public string MaSanPham { get; set; } = null!;
+        [ForeignKey(nameof(HoaDon))]
+        public string MaHoaDon { get; set; }
+        public int SoLuong { get; set; }
 
-    public int SoLuong { get; set; }
+        public decimal DonGia { get; set; }
 
-    public decimal DonGia { get; set; }
+        public HoaDon HoaDon { get; set; }
 
-    public virtual HoaDon MaHoaDonNavigation { get; set; } = null!;
-
-    public virtual SanPham MaSanPhamNavigation { get; set; } = null!;
+     
+    }
 }

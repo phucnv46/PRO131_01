@@ -15,14 +15,14 @@ namespace PRO131_01.Forms
         public FormMain()
         {
             InitializeComponent();
-            AutoSize = true;
         }
 
         Form? curentForm;
 
         private void ChangeForm(Form form)
         {
-            if (curentForm != null) { 
+            if (curentForm != null)
+            {
                 curentForm.Close();
             }
 
@@ -39,16 +39,17 @@ namespace PRO131_01.Forms
         {
             switch (e.Value.ID)
             {
-                default:
+                default: ChangeForm(new FormBanHang());
                     break;
-                case "qlsp":
+                case "bh":
                     {
-                        ChangeForm(new Form1());
+                        ChangeForm(new FormBanHang());
                         break;
                     }
-                case "qlkh":
+
+                case "sp":
                     {
-                        ChangeForm(new FormQLKH());
+                        ChangeForm(new FormQLSP());
                         break;
                     }
             }

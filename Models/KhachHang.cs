@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PRO131_01.Models;
-
-public partial class KhachHang
+namespace PRO131_01.Models
 {
-    public long MaKhachHang { get; set; }
+    public class KhachHang
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Ma { get; set; }
 
-    public string HoTen { get; set; } = null!;
+        public string SoDienThoai { get; set; }
 
-    public string SoDienThoai { get; set; } = null!;
+        public string HoTen { get; set; }
 
-    public string? Email { get; set; }
+        public string? Email { get; set; }
 
-    public string? DiaChi { get; set; }
-
-    public virtual ICollection<HoaDon> HoaDons { get; set; } = new List<HoaDon>();
+        public List<HoaDon> HoaDons { get; set; } = new();
+    }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PRO131_01.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,17 +6,18 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Dynamic.Core;
+using PRO131_01.Data;
 
 namespace PRO131_01.Repositories
 {
     public class GenericRepository<T> where T : class
     {
-        readonly public Sd20308DbContext _context; // khai báo context
+        readonly public SneakerShopDbContext _context; // khai báo context
         readonly public DbSet<T> _dbSet; //khai báo dbset
 
         public GenericRepository()
         {
-            _context = new Sd20308DbContext();
+            _context = new ();
             _dbSet = _context.Set<T>();
         }
 
@@ -35,7 +35,7 @@ namespace PRO131_01.Repositories
         public void Add(T item)
         {
             _dbSet.Add(item);
-            _context.SaveChanges();
+           _context.SaveChanges();
         }
 
 

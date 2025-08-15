@@ -1,31 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PRO131_01.Models;
-
-public partial class HoaDon
+namespace PRO131_01.Models
 {
-    public string MaHoaDon { get; set; } = null!;
+    public class HoaDon
+    {
+        [Key]
+        public string Ma { get; set; }
 
-    public DateTime ThoiGianTao { get; set; }
+        public DateTime ThoiGianTao { get; set; }
 
-    public decimal TongHoaDon { get; set; }
+        public decimal TongTien
+        {
+            get
+            { 
+                return HoaDonChiTiets.Sum(hdct=>hdct.DonGia); 
+            }
+        }
+        public decimal SoTienGiam { get; set; } = 0;
+        public decimal ThanhTien { get; set; } = 0;
 
-    public decimal TongTienGiam { get; set; }
+        public TrangThaiHoaDon TrangThai { get; set; } = TrangThaiHoaDon.ChuaThanhToan;
 
-    public decimal ThanhTien { get; set; }
+        public Voucher? Voucher { get; set; }
 
-    public long MaNhanVien { get; set; }
+        public NhanVien NhanVien { get; set; }
 
-    public long? MaKhachHang { get; set; }
+        public KhachHang? KhachHang { get; set; }
 
-    public string? MaVoucher { get; set; }
+        public List<HoaDonChiTiet> HoaDonChiTiets { get; set; } = new List<HoaDonChiTiet>();
 
-    public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; } = new List<HoaDonChiTiet>();
+        [ForeignKey(nameof(Voucher))]
 
-    public virtual KhachHang? MaKhachHangNavigation { get; set; }
+        public string? MaVoucher { get; set; }
 
-    public virtual NhanVien MaNhanVienNavigation { get; set; } = null!;
+        [ForeignKey(nameof(NhanVien))]
+        public string? MaNhanVien { get; set; }
+        [ForeignKey(nameof(KhachHang))]
+        public long? MaKhachHang { get; set; }
+    }
 
-    public virtual Voucher? MaVoucherNavigation { get; set; }
+    public enum TrangThaiHoaDon
+    {
+        ChuaThanhToan, DaThanhToan, DaHuy
+    }
 }

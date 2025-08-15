@@ -1,6 +1,6 @@
 ﻿namespace PRO131_01.Forms
 {
-    partial class FormQLKH
+    partial class FormBanHang
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            table1 = new AntdUI.Table();
+            label1 = new Label();
             SuspendLayout();
             // 
-            // table1
+            // label1
             // 
-            table1.Gap = 12;
-            table1.Location = new Point(257, 382);
-            table1.Name = "table1";
-            table1.Size = new Size(1249, 479);
-            table1.TabIndex = 0;
-            table1.Text = "table1";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 19F);
+            label1.Location = new Point(619, 467);
+            label1.Name = "label1";
+            label1.Size = new Size(277, 51);
+            label1.TabIndex = 0;
+            label1.Text = "Form Bán hàng";
             // 
-            // FormQLKH
+            // FormBanHang
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1530, 894);
-            Controls.Add(table1);
-            Name = "FormQLKH";
-            Text = "FormQLKH";
+            ClientSize = new Size(1478, 936);
+            Controls.Add(label1);
+            Name = "FormBanHang";
+            Text = "FormBanHang";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private AntdUI.Table table1;
+        private Label label1;
     }
 }

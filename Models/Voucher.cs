@@ -1,25 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace PRO131_01.Models;
-
-public partial class Voucher
+namespace PRO131_01.Models
 {
-    public string MaVoucher { get; set; } = null!;
+    public class Voucher
+    {
+        [Key]
+        public string MaVoucher { get; set; }
 
-    public string TenVouCher { get; set; } = null!;
+        public string TenVoucher { get; set; }
 
-    public int LoaiGiam { get; set; }
+        public decimal? GiaTriApDung { get; set; } = 0;
 
-    public decimal GiaTriGiam { get; set; }
+        public decimal GiaTriGiam { get; set; } // Dùng cho cả 2 trường hợp
 
-    public DateOnly HanSuDung { get; set; }
+        public decimal? GiaTriGiamToiDa { get; set; }
 
-    public decimal? GiaTriApDung { get; set; }
+        public LoaiVoucher LoaiVoucher { get; set; }
+    }
 
-    public decimal? GiaTriGiamToiDa { get; set; }
+    public enum LoaiVoucher
+    {
+        GiamTrucTiep, GiamPhamTram
+    }
 
-    public bool TrangThai { get; set; }
-
-    public virtual ICollection<HoaDon> HoaDons { get; set; } = new List<HoaDon>();
 }
